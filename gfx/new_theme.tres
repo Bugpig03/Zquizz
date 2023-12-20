@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=3 uid="uid://d11n57wu6yb7"]
+
+[resource]
+ItemList/colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)

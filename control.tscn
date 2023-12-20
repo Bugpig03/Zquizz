@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmgheprsm3t4j"]
+
+[ext_resource type="Texture2D" uid="uid://w2bt8vn5yuv5" path="res://gfx/background.jpg" id="1_tcaif"]
+[ext_resource type="Script" path="res://control.gd" id="1_vnvg2"]
+[ext_resource type="Theme" uid="uid://d11n57wu6yb7" path="res://gfx/new_theme.tres" id="2_4vcpi"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vnvg2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tcaif")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -86.0
+offset_top = 37.0
+offset_right = 86.0
+offset_bottom = 79.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+theme_override_font_sizes/font_size = 35
+text = "Quizz Game"
+
+[node name="DisplayText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.0
+offset_top = -96.0
+offset_right = 448.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00131728
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+theme_override_font_sizes/font_size = 21
+text = "Question here
+"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -224.0
+offset_top = -50.0
+offset_right = 225.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.00463737
+theme = ExtResource("2_4vcpi")
+item_count = 4
+item_0/text = "Answer 1"
+item_1/text = "Answer 2"
+item_2/text = "Answer 3"
+item_3/text = "Answer 4"
+
+[node name="RestardBtn" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 267.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+text = "New Number"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -154.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+placeholder_text = "seed"
+shortcut_keys_enabled = false
+
+[node name="init_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -217.0
+offset_top = -40.0
+offset_right = -159.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "init"
+
+[connection signal="pressed" from="RestardBtn" to="." method="_on_restard_btn_pressed"]
+[connection signal="pressed" from="init_button" to="." method="_on_init_button_pressed"]
