@@ -21,15 +21,18 @@ var correctAnswer = 0
 func _ready():
 	get_data_from_json("res://data/quiz_data.json")
 	randomize()
+	seed = randi_range(0, 999999999999)
+	$TextEdit.text = str(seed)
 	rng.seed = seed
-	#$DisplayText.text = question
+	#reset_color_answer()
 	
 func _process(delta):
 	pass
 
 func _on_restard_btn_pressed():
-	randomGeneratedIndex = rng.randi_range(1, 500)
+	randomGeneratedIndex = rng.randi_range(1, 543)
 	pick_question(randomGeneratedIndex)
+	reset_color_answer()
 	refresh_ui()	
 
 func _on_init_button_pressed():
@@ -62,7 +65,37 @@ func refresh_ui():
 	$BoxContainer/VBoxContainer2/btnAnswer2.text = str(answer2)
 	$BoxContainer/VBoxContainer/btnAnswer3.text = str(answer3)
 	$BoxContainer/VBoxContainer2/btnAnswer4.text = str(answer4)
+	
+func display_correct_answer(greenButton):
+	$BoxContainer/VBoxContainer/btnAnswer1.add_theme_color_override("font_color", Color("FF0000"))
+	$BoxContainer/VBoxContainer2/btnAnswer2.add_theme_color_override("font_color", Color("FF0000"))
+	$BoxContainer/VBoxContainer/btnAnswer3.add_theme_color_override("font_color", Color("FF0000"))
+	$BoxContainer/VBoxContainer2/btnAnswer4.add_theme_color_override("font_color", Color("FF0000"))
+	match int(greenButton):
+		1:
+			$BoxContainer/VBoxContainer/btnAnswer1.add_theme_color_override("font_color", Color("008000"))
+		2:
+			$BoxContainer/VBoxContainer2/btnAnswer2.add_theme_color_override("font_color", Color("008000"))
+		3:
+			$BoxContainer/VBoxContainer/btnAnswer3.add_theme_color_override("font_color", Color("008000"))
+		4:
+			$BoxContainer/VBoxContainer2/btnAnswer4.add_theme_color_override("font_color", Color("008000"))
 
+func reset_color_answer():
+	$BoxContainer/VBoxContainer/btnAnswer1.add_theme_color_override("font_color", Color("FFFFFF"))
+	$BoxContainer/VBoxContainer2/btnAnswer2.add_theme_color_override("font_color", Color("FFFFFF"))
+	$BoxContainer/VBoxContainer/btnAnswer3.add_theme_color_override("font_color", Color("FFFFFF"))
+	$BoxContainer/VBoxContainer2/btnAnswer4.add_theme_color_override("font_color", Color("FFFFFF"))	
+	
+	
+func _on_btn_answer_1_pressed():
+	display_correct_answer(correctAnswer)
 
-func _on_btn_show_correct_answer_pressed():
-	$LabelCorrectAnswer.text = str(correctAnswer)
+func _on_btn_answer_2_pressed():
+	display_correct_answer(correctAnswer)
+
+func _on_btn_answer_3_pressed():
+	display_correct_answer(correctAnswer)
+
+func _on_btn_answer_4_pressed():
+	display_correct_answer(correctAnswer)

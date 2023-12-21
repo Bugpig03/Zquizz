@@ -33,7 +33,7 @@ offset_right = 86.0
 offset_bottom = 79.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_font_sizes/font_size = 42
 text = "Quizz Game"
 
 [node name="DisplayText" type="Label" parent="."]
@@ -138,36 +138,20 @@ text = "E"
 layout_mode = 2
 text = "w"
 
-[node name="btnShowCorrectAnswer" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = -33.0
-offset_right = 115.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Afficher la bonne réponse"
-
-[node name="LabelCorrectAnswer" type="Label" parent="."]
-layout_mode = 0
-offset_left = 556.0
-offset_top = 582.0
-offset_right = 596.0
-offset_bottom = 605.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-
-[node name="Label2" type="Label" parent="."]
+[node name="LabelVersioning" type="Label" parent="."]
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "version debug v0.0.3"
+text = "package : DEBUG
+version : 0.0.4
+date : 21/12/2023
+"
 
 [connection signal="pressed" from="RestardBtn" to="." method="_on_restard_btn_pressed"]
 [connection signal="pressed" from="init_button" to="." method="_on_init_button_pressed"]
-[connection signal="pressed" from="btnShowCorrectAnswer" to="." method="_on_btn_show_correct_answer_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/btnAnswer1" to="." method="_on_btn_answer_1_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/btnAnswer3" to="." method="_on_btn_answer_3_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/btnAnswer2" to="." method="_on_btn_answer_2_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer2/btnAnswer4" to="." method="_on_btn_answer_4_pressed"]
