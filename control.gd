@@ -8,6 +8,7 @@ var rng = RandomNumberGenerator.new()
 var seed = 0
 var quizData = " "
 var randomGeneratedIndex = 0
+var score = 0
 
 #VARIABLES QUIZ
 var question = " "
@@ -28,7 +29,7 @@ func _ready():
 	
 func _process(delta):
 	pass
-
+	
 func _on_restard_btn_pressed():
 	randomGeneratedIndex = rng.randi_range(1, 543)
 	pick_question(randomGeneratedIndex)
@@ -89,13 +90,34 @@ func reset_color_answer():
 	
 	
 func _on_btn_answer_1_pressed():
+	answer_is_correct(1)
 	display_correct_answer(correctAnswer)
 
 func _on_btn_answer_2_pressed():
+	answer_is_correct(2)
 	display_correct_answer(correctAnswer)
 
 func _on_btn_answer_3_pressed():
+	answer_is_correct(3)
 	display_correct_answer(correctAnswer)
 
 func _on_btn_answer_4_pressed():
+	answer_is_correct(4)
 	display_correct_answer(correctAnswer)
+	
+func _on_check_btn_music_pressed():
+	if $HBoxContainer/checkBtnMusic.button_pressed:
+		$AudioStreamPlayer_BGM.volume_db = -20
+	else:
+		$AudioStreamPlayer_BGM.volume_db = -200
+
+func answer_is_correct(player_answer):
+	if player_answer == correctAnswer:
+		score += 1
+		$HBoxContainer2/label_score.text = str(score)
+		$AudioStreamPlayer_sound_effect.stream = load("res://audio/sound/SFX_Positive.wav")
+		print("correct!")
+	else:
+		print("fail")
+		$AudioStreamPlayer_sound_effect.stream = load("res://audio/sound/SFX_Fail.wav")
+	$AudioStreamPlayer_sound_effect.play()

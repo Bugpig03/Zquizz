@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmgheprsm3t4j"]
+[gd_scene load_steps=4 format=3 uid="uid://bmgheprsm3t4j"]
 
 [ext_resource type="Texture2D" uid="uid://w2bt8vn5yuv5" path="res://gfx/background.jpg" id="1_tcaif"]
 [ext_resource type="Script" path="res://control.gd" id="1_vnvg2"]
+[ext_resource type="AudioStream" uid="uid://dev0p4x3u6aj3" path="res://audio/music/Song_Happy_Town_Loop.wav" id="3_u82hi"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -144,10 +145,57 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "package : DEBUG
-version : 0.0.4
-date : 21/12/2023
+text = "version : 0.0.5
+date : 22/12/2023
 "
+
+[node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_u82hi")
+volume_db = -20.0
+autoplay = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -119.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+text = "musique
+"
+
+[node name="checkBtnMusic" type="CheckButton" parent="HBoxContainer"]
+layout_mode = 2
+button_pressed = true
+
+[node name="AudioStreamPlayer_sound_effect" type="AudioStreamPlayer" parent="."]
+volume_db = -25.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+text = "Votre score :"
+
+[node name="label_score" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
+text = "0"
 
 [connection signal="pressed" from="RestardBtn" to="." method="_on_restard_btn_pressed"]
 [connection signal="pressed" from="init_button" to="." method="_on_init_button_pressed"]
@@ -155,3 +203,4 @@ date : 21/12/2023
 [connection signal="pressed" from="BoxContainer/VBoxContainer/btnAnswer3" to="." method="_on_btn_answer_3_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/btnAnswer2" to="." method="_on_btn_answer_2_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/btnAnswer4" to="." method="_on_btn_answer_4_pressed"]
+[connection signal="pressed" from="HBoxContainer/checkBtnMusic" to="." method="_on_check_btn_music_pressed"]
