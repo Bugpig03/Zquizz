@@ -53,7 +53,7 @@ grow_vertical = 2
 rotation = -0.00131728
 theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
 theme_override_font_sizes/font_size = 21
-text = "Lance une partie pour avoir une question random !"
+text = "La partie vas commencer dans 5 secondes !"
 horizontal_alignment = 1
 autowrap_mode = 2
 
@@ -82,7 +82,7 @@ grow_vertical = 0
 placeholder_text = "seed"
 shortcut_keys_enabled = false
 
-[node name="init_button" type="Button" parent="."]
+[node name="btn_new_game" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -95,7 +95,7 @@ offset_right = -159.0
 offset_bottom = -1.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "init"
+text = "Commencer une nouvelle partie"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -145,8 +145,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 8
-text = "version : 0.0.5
-date : 22/12/2023
+text = "version : 0.0.6
+date : 31/12/2023
 "
 
 [node name="AudioStreamPlayer_BGM" type="AudioStreamPlayer" parent="."]
@@ -197,8 +197,11 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.196078, 0.196078, 0.196078, 1)
 text = "0"
 
+[node name="timer_new_question" type="Timer" parent="."]
+wait_time = 4.0
+
 [connection signal="pressed" from="RestardBtn" to="." method="_on_restard_btn_pressed"]
-[connection signal="pressed" from="init_button" to="." method="_on_init_button_pressed"]
+[connection signal="pressed" from="btn_new_game" to="." method="_on_btn_new_game_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/btnAnswer1" to="." method="_on_btn_answer_1_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/btnAnswer3" to="." method="_on_btn_answer_3_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer2/btnAnswer2" to="." method="_on_btn_answer_2_pressed"]
